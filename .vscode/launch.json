@@ -1,0 +1,43 @@
+{
+    // Use IntelliSense to find out which attributes exist for node debugging
+    // Use hover for the description of the existing attributes
+    // For further information visit https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Test",
+            "type": "node2",
+            "request": "launch",
+            "program": "${workspaceRoot}/bacasable/testrunner/runner.ts",
+            "cwd": "${workspaceRoot}",
+            "outFiles": ["${workspaceRoot}/build/**/*.js"],
+            "sourceMaps": true
+        },
+        {
+            "name": "Launch Test Injection",
+            "type": "node2",
+            "request": "launch",
+            "program": "${workspaceRoot}/bacasable/testrunner/test_injection.ts",
+            "cwd": "${workspaceRoot}",
+            "outFiles": ["${workspaceRoot}/build/**/*.js"],
+            "sourceMaps": true
+        },
+        {
+            "name": "Launch Node",
+            "type": "node2",
+            "request": "launch",
+            "program": "${workspaceRoot}/node/start.ts",
+            "cwd": "${workspaceRoot}",
+            "outFiles": ["${workspaceRoot}/build/**/*.js"],
+            "sourceMaps": true
+        },
+        {
+            "name": "Attach to Process",
+            "type": "node2",
+            "request": "attach",
+            "port": 9229,
+            "outFiles": [],
+            "sourceMaps": true
+        }
+    ]
+}

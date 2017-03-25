@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "sourceMap": true,
+        "outDir": "./build"
+        //"outFile": "build/out.js",
+    },
+    "include": [
+        "**/*.ts"
+    ],
+    "exclude": [
+        "node_modules/**/*.ts" // /home/etienne/bacasable-blog/node_modules/**/*.ts
+    ]
+}

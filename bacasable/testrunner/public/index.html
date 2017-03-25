@@ -1,0 +1,75 @@
+<html>
+<body>
+
+<div id="socketStatus"></div>
+<select id="idListeTests"></select>
+
+<button id="boutonLancer"> Lancer</button>
+
+<div id="messages"></div>
+
+<div id="svgContainer"></div>
+
+<script src="socket.io.min.js"></script>
+<script src="utils.js"></script>
+<script src="graph.js"></script>
+<script src="dragSvg.js"></script>
+
+<script>
+
+window.onload = function()
+{
+    get('/api/tests', function(req) {
+        JSON.parse(req.response).forEach(o =>
+        {
+            addOption('idListeTests', o, o);
+        });
+    });
+
+    boutonLancer.onclick = function()
+    {
+        graphClearMessages();
+        post('/api/lancer', {nom:selectedOptionValue('idListeTests')}, null);
+    }
+
+    get('/schema.svg', function(req) { 
+        var mySVG = req.responseXML.getElementsByTagName("svg")[0];
+        document.getElementById('svgContainer').appendChild(mySVG);
+    });
+
+    var socket = io.connect('http://localhost:4000', {
+        'reconnection': true,
+        'reconnectionDelay': 500,
+        'reconnectionAttempts': 10
+    });
+
+    socket.on('message', function(msg){
+        //var li = document.createElement('li');
+        //li.innerText = msg;
+        //document.getElementById('messages').appendChild(li);
+        graphPushMessage(msg);
+    });
+
+    var socketConnected = false;
+    socket.on('disconnect', function(){
+        document.getElementById('socketStatus').textContent = 'disconnected';
+    });
+
+    socket.on('connect', function(){
+        document.getElementById('socketStatus').textContent = 'hop';
+        
+        console.log(selectedOptionValue('idListeTests'));
+        if (selectedOptionValue('idListeTests') != '')
+            boutonLancer.onclick();
+
+    });
+
+
+};
+
+
+
+</script>
+
+</body>
+</html>
