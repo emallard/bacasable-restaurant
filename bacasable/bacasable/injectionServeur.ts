@@ -10,7 +10,7 @@ export class InjectionServeur
 
         StaticBindings.bindings.forEach(b => 
         {
-            console.log('add server binding ' + b.typeInterface.toString().split(' ')[1]);
+            console.log('add server binding ' + b.typeInterface.toString().split(' ')[1] + ' to ' + b.typeInstance.toString().split(' ')[1]);
             injection.addBinding(b)
         });
     }

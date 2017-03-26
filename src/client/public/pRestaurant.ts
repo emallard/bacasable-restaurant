@@ -3,9 +3,9 @@ import { inject, injectNewGeneric } from '../../../bacasable/bacasable/injection
 import { ajouterRoute, Lien, lien, Redirection } from '../../../bacasable/bacasable/routage';
 
 
-export class PRestaurants
+export class PRestaurant
 {
-    static route = ajouterRoute('/restaurant/:nom', PRestaurants);
+    static route = ajouterRoute('/restaurant/:nom', PRestaurant);
     
     app = inject(ApplicationClient);
       

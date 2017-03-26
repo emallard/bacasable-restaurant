@@ -1,5 +1,6 @@
 build/**
 typings
+node/public/build
 
 # Logs
 logs

@@ -25,8 +25,8 @@ export class NavigateurReel extends INavigateur
                 if (req.readyState == 4) {
                     if(req.status == 200)
                     {
-                        console.log('resolve');
-                        _resolve(req.responseText);
+                        console.log(JSON.parse(req.responseText));
+                        _resolve(JSON.parse(req.responseText));
                     }   
                     else
                     {

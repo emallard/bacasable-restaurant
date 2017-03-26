@@ -10,6 +10,7 @@ export class Restaurant
     duree:string;
 }
 
+
 export class ListeRestaurants extends WebService<string, Restaurant[]>
 {
     static route = ajouterRouteApi('/api/liste-restaurants', ListeRestaurants);

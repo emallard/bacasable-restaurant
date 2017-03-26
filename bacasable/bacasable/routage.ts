@@ -164,6 +164,12 @@ class Routeur
         return found.pageType;
     }
 
+    trouverRoutePourLeType<T>(type: {new(): T; }) : RouteParamétrée
+    {
+        var found = this.routes.find(r => r.pageType == type);
+        return found;
+    }
+
     private identifierRoute(_url:string) : [RouteParamétrée, any]
     {
         //console.log('identifierRoute ' +_url);

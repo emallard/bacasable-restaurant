@@ -9,10 +9,20 @@ export class ListeRestaurantsImpl extends ListeRestaurants
                                            .inTypeScope(ExecutionRequeteServeur);
 
     persistance = inject(IPersistance);
+/*  
+    executer(ville:string) : Promise<Restaurant[]>
+    {
+        return this.persistance.collection(Restaurant).find({$eq: {ville:ville}});
+    }
+*/
 
     async executer(ville:string) : Promise<Restaurant[]>
     {
-        return await this.persistance.collection(Restaurant).find({$eq: {ville:ville}});
+        //return this.persistance.collection(Restaurant).find({$eq: {ville:ville}});
+        return [    {nom:'MiamResto',
+                    ville:'Amenon',
+                    prix:'Cher',
+                    duree:'10-20min'}  ]
     }
 }
 

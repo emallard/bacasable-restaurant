@@ -1,6 +1,11 @@
 'use strict';
 
 var path = require('path');
+var glob = require("glob");
+var bundleFiles = glob.sync('./src/client/**/*.ts');
+bundleFiles = bundleFiles.filter(function (x) {return x != './src/client/lanceur.ts'});
+bundleFiles.push('./src/client/lanceur.ts');
+console.log(bundleFiles);
 
 var babelOptions = {
   "presets": [
@@ -11,11 +16,11 @@ var babelOptions = {
 module.exports = {
   cache: true,
   entry: {
-    bundle: './src/client/application.ts',
+    bundle: bundleFiles,
     vendor: ['babel-polyfill']
   },
   output: {
-        path: './node/public/libs',
+        path: './node/public/build',
         filename: '[name].js',
         library: '[name]'
     },

@@ -7,7 +7,7 @@ export class ApplicationServeur
     routeurServeur = inject(RouteurServeur);
     creerExecution = injectFunc(ExecutionRequeteServeur);
     
-    recevoir(url:string, parameters:any):any
+    recevoir(url:string, parameters:any):Promise<Object>
     {
         var execution = this.creerExecution();
         return execution.executer(url, parameters);
